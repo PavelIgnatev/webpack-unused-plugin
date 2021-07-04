@@ -15,8 +15,8 @@ let BlackListFull = [
 
 function ThroughDirectory(Directory) {
   fs.readdirSync(Directory).forEach((File) => {
-    if (BlackListFull.indexOf(File) === -1) {
-      const absolutPath = path.join(Directory, File);
+    const absolutPath = path.join(Directory, File);
+    if (BlackListFull.indexOf(absolutPath) === -1) {
       if (fs.statSync(absolutPath).isDirectory())
         return ThroughDirectory(absolutPath);
       else return FilesFull.set(absolutPath, null);
@@ -26,7 +26,8 @@ function ThroughDirectory(Directory) {
 
 class UnusedFiles {
   constructor(BlackListSettings) {
-    BlackListFull += BlackListSettings;
+
+    BlackListFull = BlackListFull.concat(BlackListSettings);
     //Получаем все пути в директории в одну коллекцию FilesFull
     ThroughDirectory("./");
   }
