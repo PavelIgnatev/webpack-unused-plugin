@@ -22,12 +22,12 @@ $ npm install -S https://github.com/PavelIgnatev/webpack-unused-plugin.git
 ```
 
 
-Затем добавьте свои настройки в плагин, запишите папок/файлов, которые просматривать не нужно, с абсолютным путем от корня репозитория до них:
+Затем добавьте свои настройки в плагин, запишите папок/файлов, которые просматривать не нужно:
 
 ```js
 {
  "plugins": [
-    new webpackUnusedFiles(['/dist', '/build']),
+    new webpackUnusedFiles(['dist', 'build', 'components/index.js']),
  ]
 }
 ```
