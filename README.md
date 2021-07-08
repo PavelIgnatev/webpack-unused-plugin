@@ -11,26 +11,33 @@ $ npm install -S https://github.com/PavelIgnatev/webpack-unused-plugin.git
 
 ## Использование
 
-Добавьте плагин `webpack-unused-plugin` в ваш конфигурационный файл `webpack.confing.js`:
+1) Импортируйте плагин в ваш файл `webpack.confing.js`:
 
-```js
-{
- "plugins": [
-    new webpackUnusedFiles(),
- ]
-}
-```
+    ```js
+    const webpackUnusedFiles = require('webpack-unused-plugin')
+    ```
 
 
-Затем добавьте свои настройки в плагин, запишите названия папок/файлов, которые просматривать не нужно:
+2) Добавьте плагин `webpack-unused-plugin` в настройки конфигурационного файла `webpack.confing.js`:
 
-```js
-{
- "plugins": [
-    new webpackUnusedFiles(['dist', 'build', 'components/index.js']),
- ]
-}
-```
+    ```js
+    {
+     "plugins": [
+        new webpackUnusedFiles(),
+     ]
+    }
+    ```
+
+
+3) Затем добавьте дополнительные настройки для игнорирования папок/файлов при работе плагина:
+
+    ```js
+    {
+     "plugins": [
+        new webpackUnusedFiles(['dist', 'build', 'components/index.js']),
+     ]
+    }
+    ```
 
 ## Результат работы
 
